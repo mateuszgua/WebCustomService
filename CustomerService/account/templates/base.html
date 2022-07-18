@@ -11,13 +11,13 @@
       {% if request.user.is_authenticated %}
         <ul class="menu">
             <li {% if section == "dashboard" %}class="selected"{% endif%}>
-              <a href="{% url "dashboard" %}">Panel główny</a>
+              <a href="{% url "dashboard" %}">Main panel</a>
             </li>
             <li {% if section == "images" %}class="selected"{% endif %}>
-              <a href="#">Obrazy</a>
+              <a href="#">Images</a>
             </li>
             <li {% if section == "people" %}class="selected"{% endif %}>
-              <a href="#">Ludzie</a>
+              <a href="#">Peoples</a>
             </li>
         </ul>
       {% endif %}
@@ -25,9 +25,9 @@
       <span class="user">
           {% if request.user.is_authenticated %}
             Witaj, {{ request.user.first_name }}!
-            <a href="{% url "logout" %}">Wyloguj</a>
+            <a href="{% url "logout" %}">Sign out</a>
           {% else %}
-            <a href="{% url "login" %}">Zaloguj</a>
+            <a href="{% url "login" %}">Sign in</a>
           {% endif %}
       </span>
   </div>
