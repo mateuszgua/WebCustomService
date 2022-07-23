@@ -33,6 +33,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #User apps
     'account.apps.AccountConfig',
+    'csvs.apps.CsvsConfig',
+    'meas_data.apps.MeasDataConfig',
+
     #Default apps
     'django.contrib.admin',
     'django.contrib.auth',
