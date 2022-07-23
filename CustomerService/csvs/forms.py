@@ -5,4 +5,4 @@ class CsvModelForm(forms.ModelForm):
 
     class Meta:
         model = Csv
-        fields = ('file_name',)
+        fields = ('file_name', )

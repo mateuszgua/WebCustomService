@@ -22,3 +22,6 @@ class MeasData(models.Model):
 
     def __str__(self):
         return 'MeasData {}'.format(self.id)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
