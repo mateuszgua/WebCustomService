@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'csvs.apps.CsvsConfig',
     'meas_data.apps.MeasDataConfig',
+    'devicedata.apps.DevicedataConfig',
 
     #Default apps
     'django.contrib.admin',

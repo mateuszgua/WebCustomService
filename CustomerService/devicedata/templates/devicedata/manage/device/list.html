@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}My devices{% endblock %}
+
+{% block content %}
+  <h1>My devices</h1>
+
+  <div class="module">
+      {% for device in object_list %}
+        <div class="device-info">
+            <h3>{{ device.title }}</h3>
+            <p>
+                <a href="{% url "device_edit" device.id %}">Edit</a>
+                <a href="{% url "device_delete" device.id %}">Delete</a>
+            </p>
+        </div>
+      {% empty %}
+        <p>You don't create any device.</p>
+      {% endfor %}
+      <p>
+          <a href="{% url "device_create" %}" class="button">Create new device</a>
+      </p>
+  </div>
+{% endblock %}
+

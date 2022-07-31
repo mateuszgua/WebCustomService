@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
     path('add_csv/', include('csvs.urls', namespace='csvs')),
+    path('devicedata/', include('devicedata.urls')),
 ]
 
 if settings.DEBUG:

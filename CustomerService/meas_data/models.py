@@ -1,22 +1,21 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.utils.translation import gettext as _
 
 class MeasData(models.Model):
-    index = models.ForeignKey(User, on_delete=models.CASCADE)
-    profile = models.CharField(max_length=100)
-    date_meas = models.DateTimeField()
-    time_meas = models.DateTimeField()
-    humidity = models.PositiveIntegerField()
-    temp_cel = models.PositiveIntegerField()
-    temp_fahr = models.PositiveIntegerField()
-    class_ISO4 = models.PositiveIntegerField()
-    class_ISO6 = models.PositiveIntegerField()
-    class_ISO14 = models.PositiveIntegerField()
-    class_NAS = models.PositiveIntegerField()
-    class_GOST = models.PositiveIntegerField()
-    class_SAE4 = models.PositiveIntegerField()
-    class_SAE6 = models.PositiveIntegerField()
-    class_SAE14 = models.PositiveIntegerField()
+    profile = models.CharField(_("profile"), max_length=100)
+    date_meas = models.DateField(_("date"), auto_now=True)
+    time_meas = models.TimeField(_("time"), auto_now=True)
+    humidity = models.IntegerField(_("humidity"))
+    temp_cel = models.IntegerField(_("temperature cel"))
+    temp_fahr = models.IntegerField(_("temperature fahr"))
+    class_ISO4 = models.IntegerField(_("ISO 4um"))
+    class_ISO6 = models.IntegerField(_("ISO 6um"))
+    class_ISO14 = models.IntegerField(_("ISO 14um"))
+    class_NAS = models.IntegerField(_("NAS"))
+    class_GOST = models.IntegerField(_("GOST"))
+    class_SAE4 = models.IntegerField(_("SAE 4um"))
+    class_SAE6 = models.IntegerField(_("SAE 4um"))
+    class_SAE14 = models.IntegerField(_("SAE 4um"))
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
