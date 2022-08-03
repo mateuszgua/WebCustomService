@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load device %}
+
+{% block title %}
+    Device Profile {{ deviceprofile.order|add:1 }}: {{ deviceprofile.title }}
+{% endblock %}
+
+{% block content %}
+  {% with device=deviceprofile.device %}
+  <h1>Device "{{ device.title }}"</h1>
+  <div class="contents">
+      <h3>Device Profiles</h3>
+      <ul id="deviceprofiles">
+          {% for m in device.deviceprofiles.all %}
+            <li data-id="{{ m.id }}" {% if m == deviceprofile %} class="selected"{% endif %}>
+                <a href="{% url "deviceprofile_content_list" m.id %}">
+                <span>
+                    Device Profile <span class="order">{{ m.order|add:1 }}</span>
+                </span>
+                <br>
+                {{ m.title }}
+                </a>
+            </li>
+          {% empty %}
+          <li>No Device Profiles.</li>
+          {% endfor %}
+      </ul>
+      <p><a href="{% url "device_deviceprofile_update" device.id %}">Edit device profiles</a></p>
+  </div>
+  <div class="module">
+      <h2>Device profile {{ deviceprofile.order|add:1 }}: {{ deviceprofile.title }}</h2>
+      <h3>Device profile content:</h3>
+      <div id="deviceprofile-contents">
+          {% for content in deviceprofile.contents.all %}
+            <div data-id="{{ content.id }}">
+                {% with item=content.item %}
+                  <p>{{ item }} ({{ item|model_name }})</p>
+                  <a href="{% url "deviceprofile_content_update" deviceprofile.id item|model_name item.id>Edit</a>
+                  <form action="{% url "deviceprofile_content_delete" content.id %}" method="post">
+                  <input type="submit" value="Delete">
+                  {% csrf_token %}
+                </form>
+                {% endwith %}
+            </div>
+          {% empty %}
+            <p>This device profile don't have content.</p>
+          {% endfor %}
+      </div>
+      <hr>
+      <h3>Add new file:</h3>
+      <ul class="content-types">
+          <li><a href="{% url "deviceprofile_content_create" deviceprofile.id "file" %}">File</a></li>
+      </ul>
+  </div>
+  {% endwith %}
+{% endblock %}

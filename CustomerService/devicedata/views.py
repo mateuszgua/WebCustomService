@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Device, Content
+from .models import Device, Content, DeviceProfile
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
@@ -98,7 +98,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         return Form(*args, **kwargs)
 
     def dispatch(self, request, deviceprofile_id, model_name, id=None):
-        self.deviceprofile = get_object_or_404(Device,
+        self.deviceprofile = get_object_or_404(DeviceProfile,
                                         id=deviceprofile_id,
                                         device__owner=request.user)
         self.model = self.get_model(model_name)
@@ -140,5 +140,14 @@ class ContentDeleteView(View):
         content.item.delete()
         content.delete()
         return redirect('deviceprofile_content_list', deviceprofile.id)
+
+class DeviceProfileListView(TemplateResponseMixin, View):
+    template_name = 'devicedata/manage/deviceprofile/content_list.html'
+
+    def get(self, request, deviceprofile_id):
+        deviceprofile = get_object_or_404(DeviceProfile,
+                                          id=deviceprofile_id,
+                                          device__owner=request.user)
+        return self.render_to_response({'deviceprofile': deviceprofile})
 
 

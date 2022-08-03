@@ -13,6 +13,9 @@
                 <a href="{% url "device_edit" device.id %}">Edit</a>
                 <a href="{% url "device_delete" device.id %}">Delete</a>
                 <a href="{% url "device_deviceprofile_update" device.id %}">Edit device profiles</a>
+                {% if device.deviceprofiles.count > 0 %}
+                  <a href="{% url "deviceprofile_content_list" device.deviceprofiles.first.id %}">Manage content</a>
+                {% endif %}
             </p>
         </div>
       {% empty %}

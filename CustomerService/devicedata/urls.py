@@ -26,5 +26,8 @@ urlpatterns = [
     path('content/<int:id>/delete/',
          views.ContentDeleteView.as_view(),
          name='deviceprofile_content_delete'),
+    path('deviceprofile/<int:deviceprofile_id>/',
+         views.DeviceProfileListView.as_view(),
+         name='deviceprofile_content_list'),
 
 ]
