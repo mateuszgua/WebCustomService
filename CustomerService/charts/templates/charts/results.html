@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Chart{% endblock %}
+
+{% block content %}
+  <h1>Chart</h1>
+  <p>Result:</p>
+  <form action="." method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <div class="row content">
+          <div class="col">
+              <p id="id">Attribute ID</p>
+              <input type="text" name="attributeid" required="required">
+          </div>
+      </div>
+  </form>
+   <div class="container">
+      <input type="text" list="files" placeholder="File name" class="form-control">
+      <datalist id="files">
+          {% for file in files %}
+            <option value="{{ file.name }}"></option>
+          {% endfor %}
+      </datalist>
+  </div>
+
+  <script>
+    const stackedLine = new Chart(ctx, {
+      type: 'line',
+      data: data,
+      options: {
+        scales: {
+          y: {
+            stacked: true
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}

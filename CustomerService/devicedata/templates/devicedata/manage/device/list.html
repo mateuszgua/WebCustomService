@@ -5,7 +5,7 @@
 {% block content %}
   <h1>My devices</h1>
 
-  <div class="module">
+  <div class="deviceprofile">
       {% for device in object_list %}
         <div class="device-info">
             <h3>{{ device.title }}</h3>
@@ -26,4 +26,3 @@
       </p>
   </div>
 {% endblock %}
-

@@ -27,7 +27,8 @@
       </ul>
       <p><a href="{% url "device_deviceprofile_update" device.id %}">Edit device profiles</a></p>
   </div>
-  <div class="module">
+
+  <div class="deviceprofile">
       <h2>Device profile {{ deviceprofile.order|add:1 }}: {{ deviceprofile.title }}</h2>
       <h3>Device profile content:</h3>
       <div id="deviceprofile-contents">

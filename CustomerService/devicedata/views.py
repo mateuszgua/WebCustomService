@@ -9,7 +9,6 @@ from .forms import DeviceProfileFormSet
 from django.forms.models import modelform_factory
 from django.apps import apps
 
-
 class OwnerMixin(object):
     def get_queryset(self):
         qs = super(OwnerMixin, self).get_queryset()

@@ -34,7 +34,7 @@ class DeviceProfile(models.Model):
         return f'{self.order}. {self.title}'
 
 class Content(models.Model):
-    module = models.ForeignKey(DeviceProfile,
+    deviceprofile = models.ForeignKey(DeviceProfile,
                                related_name='contents',
                                on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType,
@@ -43,7 +43,7 @@ class Content(models.Model):
                                      on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
-    order = OrderField(blank=True, for_fields=['module'])
+    order = OrderField(blank=True, for_fields=['deviceprofile'])
 
     class Meta:
         ordering = ['order']

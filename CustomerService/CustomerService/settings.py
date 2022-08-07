@@ -33,9 +33,10 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #User apps
     'account.apps.AccountConfig',
-    'csvs.apps.CsvsConfig',
-    'meas_data.apps.MeasDataConfig',
     'devicedata.apps.DevicedataConfig',
+    'charts.apps.ChartsConfig',
+    'bootstrap5',
+    'jquery',
 
     #Default apps
     'django.contrib.admin',
